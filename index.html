@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexAris - Vielen Dank!</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            background: #02000d;
+        }
+        .font-bubble {
+            font-family: 'Fredoka', sans-serif;
+        }
+        /* Cosmic Deep Space Background */
+        .space-bg {
+            background: radial-gradient(circle at 50% 50%, #150531 0%, #060114 60%, #010005 100%);
+        }
+        /* NexAris X special styling mimicking the reference image */
+        .nex-logo-text {
+            font-family: 'Fredoka', sans-serif;
+            text-shadow: 0 0 25px rgba(168, 85, 247, 0.7), 0 0 50px rgba(59, 130, 246, 0.5);
+        }
+        .big-x {
+            background: linear-gradient(135deg, #a855f7, #3b82f6, #ec4899, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.9));
+        }
+        /* Floating animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1.5deg); }
+        }
+        .floating {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+        /* Ultra-transparent Glassmorphism UI */
+        .glass-card {
+            background: rgba(10, 14, 30, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        /* Glowing borders & outlines */
+        .glow-border {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25), inset 0 0 15px rgba(59, 130, 246, 0.15);
+        }
+        
+        /* Smooth transform transitions for sucked UI elements */
+        .suckable-ui {
+            transition: transform 0.1s linear, opacity 0.2s ease-out, filter 0.1s linear;
+            transform-origin: center center;
+        }
+    </style>
+</head>
+<body class="space-bg min-h-screen text-white flex flex-col justify-between relative selection:bg-purple-500 selection:text-white">
+
+    <!-- Interactive Space Canvas (Stars, Meteorites, Black/White Hole VFX) -->
+    <canvas id="spaceCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Header / Top Section -->
+    <header id="uiHeader" class="suckable-ui relative z-10 w-full pt-8 pb-4 px-4 text-center">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center">
+            <span class="text-xs md:text-sm uppercase tracking-widest text-purple-300 font-semibold mb-2 bg-purple-950/40 backdrop-blur-md px-5 py-2 rounded-full border border-purple-500/40 shadow-lg glow-border floating">
+                <i class="fa-solid fa-meteor text-cyan-400 mr-2"></i> Galaktisches Universum & Beleg
+            </span>
+            
+            <!-- Logo mimicking the reference image style -->
+            <div class="mt-3 flex flex-wrap items-center justify-center gap-2 md:gap-4 select-none">
+                <span class="font-bubble text-3xl md:text-5xl font-bold tracking-wider text-cyan-300 drop-shadow-[0_4px_15px_rgba(6,182,212,0.6)]">
+                    WILKOMMEN
+                </span>
+                <span class="font-bubble text-3xl md:text-5xl font-bold tracking-wider text-white drop-shadow-[0_4px_15px_rgba(255,255,255,0.6)]">
+                    BEI
+                </span>
+                <div class="flex items-center text-4xl md:text-7xl font-extrabold tracking-tight">
+                    <span class="nex-logo-text text-purple-300">NE</span>
+                    <span class="big-x mx-1 transform scale-110 hover:scale-125 transition-transform duration-300 cursor-pointer" title="NEXARIS">X</span>
+                    <span class="nex-logo-text text-purple-300">ARIS</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content / Middle Section with Transparent UI -->
+    <main id="uiMain" class="suckable-ui relative z-10 w-full max-w-2xl mx-auto px-4 my-auto">
+        <div class="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden group">
+            <!-- Background glow orbs -->
+            <div class="absolute -top-24 -right-24 w-52 h-52 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-52 h-52 bg-cyan-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Icon Header -->
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 flex items-center justify-center shadow-xl shadow-purple-500/40 transform group-hover:rotate-6 transition-transform duration-300 border border-white/20">
+                <i class="fa-solid fa-bag-shopping text-3xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"></i>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-cyan-200 drop-shadow-sm">
+                Vielen Dank für deinen Kauf!
+            </h1>
+
+            <!-- Description -->
+            <p class="text-slate-300 text-base md:text-lg leading-relaxed mb-8">
+                Wir schätzen dein Vertrauen in <span class="text-cyan-300 font-semibold">NexAris</span> sehr. Dein Produkt wurde bereitgestellt oder dir zugesendet. Genieße die Reise durch unsere digitale Galaxie!
+            </p>
+
+            <!-- Action / Interactive Button (Triggers Black Hole -> White Hole Sequence) -->
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <button id="cosmicBtn" onclick="triggerCosmicEvent()" class="px-8 py-4 rounded-2xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white shadow-2xl shadow-cyan-500/30 border border-white/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-200 flex items-center gap-3 cursor-pointer">
+                    <i class="fa-solid fa-circle-nodes text-cyan-200 animate-spin" style="animation-duration: 8s;"></i> 
+                    <span id="btnText">Schwarzes Loch aktivieren</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section with Transparent UI -->
+    <footer id="uiFooter" class="suckable-ui relative z-10 w-full py-6 px-4 text-center mt-auto">
+        <div class="max-w-xl mx-auto glass-card rounded-2xl py-4 px-6 flex flex-col md:flex-row items-center justify-center gap-3 border border-purple-500/30">
+            <div class="flex items-center gap-2 text-slate-300 text-sm md:text-base">
+                <i class="fa-solid fa-envelope text-cyan-400"></i>
+                <span>Support & Kontakt:</span>
+            </div>
+            <a href="mailto:Nexaris.Buissnes@gmail.com" class="text-cyan-300 font-semibold hover:text-cyan-200 transition-colors text-sm md:text-base tracking-wide underline decoration-cyan-500/40 underline-offset-4">
+                Nexaris.Buissnes@gmail.com
+            </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-4">&copy; 2026 NexAris. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- Advanced Space Simulation & SFX/VFX Engine -->
+    <script>
+        const canvas = document.getElementById('spaceCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // UI Element References for Suction Effect
+        const uiHeader = document.getElementById('uiHeader');
+        const uiMain = document.getElementById('uiMain');
+        const uiFooter = document.getElementById('uiFooter');
+
+        let width, height;
+        let staticStars = [];
+        let twinklingStars = [];
+        let meteorites = [];
+        let explosions = [];
+        let cosmicDust = [];
+
+        // Cosmic event states: 'IDLE', 'BLACK_HOLE_SUCKING', 'WHITE_HOLE_EXPANDING', 'RETURNING'
+        let cosmicState = 'IDLE';
+        let cosmicTimer = 0;
+        let holeX = 0, holeY = 0;
+        let holeRadius = 0;
+
+        // Web Audio API Sound Synthesizer for High-Quality SFX
+        let audioCtx = null;
+        let bhOsc1 = null, bhOsc2 = null, bhGain = null, bhFilter = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playSfx(type) {
+            try {
+                initAudio();
+                if (!audioCtx) return;
+                const now = audioCtx.currentTime;
+
+                if (type === 'meteor') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(700, now);
+                    osc.frequency.exponentialRampToValueAtTime(100, now + 1.0);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 1.0);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 1.0);
+                } else if (type === 'explosion') {
+                    // Deep cosmic rumble explosion
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(140, now);
+                    osc.frequency.exponentialRampToValueAtTime(25, now + 0.8);
+                    gain.gain.setValueAtTime(0.35, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.8);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.8);
+                } else if (type === 'blackhole_start') {
+                    // Deep cinematic sub-bass rumble + rising pitch black hole roar
+                    bhOsc1 = audioCtx.createOscillator();
+                    bhOsc2 = audioCtx.createOscillator();
+                    bhGain = audioCtx.createGain();
+                    bhFilter = audioCtx.createBiquadFilter();
+
+                    bhOsc1.type = 'sawtooth';
+                    bhOsc2.type = 'sine';
+
+                    // Sub-bass frequency sweep
+                    bhOsc1.frequency.setValueAtTime(45, now);
+                    bhOsc1.frequency.exponentialRampToValueAtTime(220, now + 6.5);
+
+                    bhOsc2.frequency.setValueAtTime(30, now);
+                    bhOsc2.frequency.exponentialRampToValueAtTime(120, now + 6.5);
+
+                    // Lowpass filter opening up
+                    bhFilter.type = 'lowpass';
+                    bhFilter.frequency.setValueAtTime(100, now);
+                    bhFilter.frequency.exponentialRampToValueAtTime(2500, now + 6.5);
+
+                    bhGain.gain.setValueAtTime(0.01, now);
+                    bhGain.gain.linearRampToValueAtTime(0.4, now + 2.0);
+                    bhGain.gain.linearRampToValueAtTime(0.5, now + 6.0);
+                    bhGain.gain.linearRampToValueAtTime(0.01, now + 6.5);
+
+                    bhOsc1.connect(bhFilter);
+                    bhOsc2.connect(bhFilter);
+                    bhFilter.connect(bhGain);
+                    bhGain.connect(audioCtx.destination);
+
+                    bhOsc1.start(now);
+                    bhOsc2.start(now);
+                    bhOsc1.stop(now + 6.6);
+                    bhOsc2.stop(now + 6.6);
+                } else if (type === 'whitehole') {
+                    // Powerful cosmic shockwave & release chime sound
+                    const osc1 = audioCtx.createOscillator();
+                    const osc2 = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    osc1.type = 'triangle';
+                    osc1.frequency.setValueAtTime(180, now);
+                    osc1.frequency.exponentialRampToValueAtTime(1800, now + 2.5);
+
+                    osc2.type = 'sine';
+                    osc2.frequency.setValueAtTime(90, now);
+                    osc2.frequency.exponentialRampToValueAtTime(800, now + 2.5);
+
+                    gain.gain.setValueAtTime(0.5, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 2.8);
+
+                    osc1.connect(gain);
+                    osc2.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc1.start(now);
+                    osc2.start(now);
+                    osc1.stop(now + 2.8);
+                }
+            } catch (e) {
+                console.log("Audio SFX note:", e);
+            }
+        }
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            holeX = width / 2;
+            holeY = height / 2;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Initialize realistic starfield
+        function initStars() {
+            staticStars = [];
+            twinklingStars = [];
+            cosmicDust = [];
+
+            // Background static stars
+            const staticCount = Math.floor((width * height) / 1800);
+            for (let i = 0; i < staticCount; i++) {
+                staticStars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    origX: Math.random() * width,
+                    origY: Math.random() * height,
+                    radius: Math.random() * 1.2 + 0.3,
+                    alpha: Math.random() * 0.7 + 0.3,
+                    color: Math.random() > 0.85 ? '#38bdf8' : (Math.random() > 0.9 ? '#c084fc' : '#ffffff')
+                });
+            }
+
+            // Twinkling prominent stars
+            const twinkleCount = Math.floor((width * height) / 8000);
+            for (let i = 0; i < twinkleCount; i++) {
+                twinklingStars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    origX: Math.random() * width,
+                    origY: Math.random() * height,
+                    radius: Math.random() * 2 + 1,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.03 + 0.01,
+                    color: Math.random() > 0.5 ? '#f472b6' : '#67e8f9'
+                });
+            }
+
+            // Cosmic Nebula Dust particles
+            for (let i = 0; i < 60; i++) {
+                cosmicDust.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    origX: Math.random() * width,
+                    origY: Math.random() * height,
+                    radius: Math.random() * 60 + 20,
+                    color: Math.random() > 0.5 ? 'rgba(168, 85, 247, 0.03)' : 'rgba(56, 189, 248, 0.03)',
+                    vx: (Math.random() - 0.5) * 0.2,
+                    vy: (Math.random() - 0.5) * 0.2
+                });
+            }
+        }
+        initStars();
+
+        // Realistic Meteorite Class with Fire Trail
+        class Meteorite {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width + 300;
+                this.y = -100;
+                this.length = Math.random() * 180 + 100;
+                this.speed = Math.random() * 8 + 5;
+                this.angle = Math.PI / 4 + (Math.random() * 0.1 - 0.05);
+                this.origX = this.x;
+                this.origY = this.y;
+                this.trail = [];
+            }
+            update() {
+                if (cosmicState === 'IDLE') {
+                    this.x -= Math.cos(this.angle) * this.speed;
+                    this.y += Math.sin(this.angle) * this.speed;
+
+                    this.trail.unshift({ x: this.x, y: this.y });
+                    if (this.trail.length > 20) this.trail.pop();
+
+                    if (this.x < -200 || this.y > height + 200) {
+                        if (Math.random() < 0.08) {
+                            this.reset();
+                            playSfx('meteor');
+                        }
+                    }
+                } else if (cosmicState === 'BLACK_HOLE_SUCKING') {
+                    let dx = holeX - this.x;
+                    let dy = holeY - this.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist > 10) {
+                        this.x += (dx / dist) * 18;
+                        this.y += (dy / dist) * 18;
+                    }
+                } else if (cosmicState === 'RETURNING') {
+                    this.x += (this.origX - this.x) * 0.1;
+                    this.y += (this.origY - this.y) * 0.1;
+                }
+            }
+            draw() {
+                ctx.save();
+                if (this.trail.length > 1 && cosmicState === 'IDLE') {
+                    for (let i = 0; i < this.trail.length; i++) {
+                        let p = this.trail[i];
+                        let ratio = 1 - (i / this.trail.length);
+                        ctx.fillStyle = `rgba(255, ${Math.floor(120 * ratio)}, 50, ${ratio * 0.6})`;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, Math.max(0.5, 3 * ratio), 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                ctx.strokeStyle = `rgba(255, 180, 100, 0.9)`;
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x + Math.cos(this.angle) * this.length * 0.7, this.y - Math.sin(this.angle) * this.length * 0.7);
+                ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#f97316';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Initialize Meteorites
+        for (let i = 0; i < 5; i++) {
+            meteorites.push(new Meteorite());
+        }
+
+        // Explosion Particle Class
+        class Particle {
+            constructor(x, y, customColor) {
+                this.x = x;
+                this.y = y;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 10 + 2;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.02 + 0.01;
+                this.size = Math.random() * 3.5 + 1;
+                this.color = customColor || (Math.random() > 0.5 ? '#38bdf8' : (Math.random() > 0.5 ? '#c084fc' : '#f43f5e'));
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx *= 0.93;
+                this.vy *= 0.93;
+                this.alpha -= this.decay;
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.alpha);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function createExplosion(x, y) {
+            playSfx('explosion');
+            for (let i = 0; i < 70; i++) {
+                explosions.push(new Particle(x, y));
+            }
+        }
+
+        // Click anywhere to spawn explosion
+        window.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+            createExplosion(e.clientX, e.clientY);
+        });
+
+        // Trigger Black Hole -> White Hole sequence
+        function triggerCosmicEvent() {
+            if (cosmicState !== 'IDLE') return;
+
+            const btnText = document.getElementById('btnText');
+            const cosmicBtn = document.getElementById('cosmicBtn');
+
+            cosmicState = 'BLACK_HOLE_SUCKING';
+            cosmicTimer = 0;
+            holeRadius = 0;
+            btnText.innerText = "Singularität aktiv...";
+            cosmicBtn.disabled = true;
+            cosmicBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            playSfx('blackhole_start');
+        }
+
+        // Periodic random explosions in space
+        setInterval(() => {
+            if (Math.random() < 0.6 && cosmicState === 'IDLE') {
+                createExplosion(Math.random() * width, Math.random() * (height * 0.7));
+            }
+        }, 3000);
+
+        // Main Animation Loop
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // 1. Draw Nebula Cosmic Dust
+            cosmicDust.forEach(dust => {
+                if (cosmicState === 'IDLE') {
+                    dust.x += dust.vx;
+                    dust.y += dust.vy;
+                    if (dust.x < -100) dust.x = width + 100;
+                    if (dust.x > width + 100) dust.x = -100;
+                    if (dust.y < -100) dust.y = height + 100;
+                    if (dust.y > height + 100) dust.y = -100;
+                } else if (cosmicState === 'BLACK_HOLE_SUCKING') {
+                    let dx = holeX - dust.x;
+                    let dy = holeY - dust.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist > 5) {
+                        dust.x += (dx / dist) * 12;
+                        dust.y += (dy / dist) * 12;
+                    }
+                } else if (cosmicState === 'RETURNING') {
+                    dust.x += (dust.origX - dust.x) * 0.1;
+                    dust.y += (dust.origY - dust.y) * 0.1;
+                }
+
+                ctx.save();
+                ctx.fillStyle = dust.color;
+                ctx.beginPath();
+                ctx.arc(dust.x, dust.y, dust.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            });
+
+            // 2. Draw Static Stars
+            staticStars.forEach(star => {
+                if (cosmicState === 'BLACK_HOLE_SUCKING') {
+                    let dx = holeX - star.x;
+                    let dy = holeY - star.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist > 5) {
+                        star.x += (dx / dist) * 16;
+                        star.y += (dy / dist) * 16;
+                    }
+                } else if (cosmicState === 'RETURNING') {
+                    star.x += (star.origX - star.x) * 0.1;
+                    star.y += (star.origY - star.y) * 0.1;
+                }
+
+                ctx.fillStyle = star.color;
+                ctx.globalAlpha = star.alpha;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // 3. Draw Twinkling Stars
+            twinklingStars.forEach(star => {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0) {
+                    star.speed = -star.speed;
+                }
+
+                if (cosmicState === 'BLACK_HOLE_SUCKING') {
+                    let dx = holeX - star.x;
+                    let dy = holeY - star.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist > 5) {
+                        star.x += (dx / dist) * 18;
+                        star.y += (dy / dist) * 18;
+                    }
+                } else if (cosmicState === 'RETURNING') {
+                    star.x += (star.origX - star.x) * 0.1;
+                    star.y += (star.origY - star.y) * 0.1;
+                }
+
+                ctx.fillStyle = star.color;
+                ctx.globalAlpha = Math.abs(star.alpha);
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.globalAlpha = 1;
+
+            // 4. Update & Draw Meteorites
+            meteorites.forEach(meteor => {
+                meteor.update();
+                meteor.draw();
+            });
+
+            // 5. Handle Cosmic Event State Machine & UI Physical Suction Transform Logic
+            if (cosmicState === 'BLACK_HOLE_SUCKING') {
+                cosmicTimer++;
+                holeRadius += 4.5; // Stays active much longer (~350 frames / ~6 seconds)
+
+                // Draw Black Hole Event Horizon
+                ctx.save();
+                ctx.shadowBlur = 60;
+                ctx.shadowColor = '#a855f7';
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.arc(holeX, holeY, Math.min(holeRadius, 320), 0, Math.PI * 2);
+                ctx.fill();
+
+                // Accretion Disk Ring
+                ctx.strokeStyle = `rgba(168, 85, 247, ${Math.min(1, cosmicTimer / 50)})`;
+                ctx.lineWidth = 8;
+                ctx.beginPath();
+                ctx.arc(holeX, holeY, Math.min(holeRadius, 320) + 12, 0, Math.PI * 2);
+                ctx.stroke();
+
+                // Inner Swirling Ring
+                ctx.strokeStyle = 'rgba(56, 189, 248, 0.7)';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.arc(holeX, holeY, Math.min(holeRadius * 0.8, 250), 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.restore();
+
+                // UI SUCKING LOGIC: Dynamically scale, rotate and pull UI towards center (holeX, holeY)
+                let progress = Math.min(1, cosmicTimer / 300);
+                let scale = Math.max(0.001, 1 - Math.pow(progress, 1.8));
+                let rotate = progress * 720; // 2 full spins while being sucked in
+                let opacity = Math.max(0, 1 - progress * 1.2);
+                let blur = progress * 20;
+
+                [uiHeader, uiMain, uiFooter].forEach(el => {
+                    el.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+                    el.style.opacity = opacity;
+                    el.style.filter = `blur(${blur}px)`;
+                });
+
+                // Transition to White Hole after prolonged sucking sequence
+                if (cosmicTimer > 350) {
+                    cosmicState = 'WHITE_HOLE_EXPANDING';
+                    cosmicTimer = 0;
+                    playSfx('whitehole');
+                }
+            } else if (cosmicState === 'WHITE_HOLE_EXPANDING') {
+                cosmicTimer++;
+                holeRadius -= 10;
+
+                // Draw blinding White Hole energy blast
+                ctx.save();
+                ctx.shadowBlur = 120;
+                ctx.shadowColor = '#ffffff';
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, 1 - cosmicTimer / 90)})`;
+                ctx.beginPath();
+                ctx.arc(holeX, holeY, Math.max(10, holeRadius * 2.5), 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                // Blast UI back out with explosive shockwave expansion
+                let outProgress = Math.min(1, cosmicTimer / 60);
+                let scale = Math.min(1, 0.1 + outProgress * 1.1); // Overshoot effect
+                let rotate = (1 - outProgress) * -180;
+                let opacity = outProgress;
+
+                [uiHeader, uiMain, uiFooter].forEach(el => {
+                    el.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+                    el.style.opacity = opacity;
+                    el.style.filter = `blur(${Math.max(0, (1 - outProgress) * 15)}px)`;
+                });
+
+                if (cosmicTimer > 80) {
+                    cosmicState = 'RETURNING';
+                    cosmicTimer = 0;
+                }
+            } else if (cosmicState === 'RETURNING') {
+                cosmicTimer++;
+
+                // Reset UI smoothly back to exact original styling
+                [uiHeader, uiMain, uiFooter].forEach(el => {
+                    el.style.transform = 'scale(1) rotate(0deg)';
+                    el.style.opacity = '1';
+                    el.style.filter = 'none';
+                });
+
+                if (cosmicTimer > 30) {
+                    cosmicState = 'IDLE';
+                    const btnText = document.getElementById('btnText');
+                    const cosmicBtn = document.getElementById('cosmicBtn');
+                    btnText.innerText = "Schwarzes Loch aktivieren";
+                    cosmicBtn.disabled = false;
+                    cosmicBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+
+            // 6. Update & Draw Explosions
+            for (let i = explosions.length - 1; i >= 0; i--) {
+                explosions[i].update();
+                explosions[i].draw();
+                if (explosions[i].alpha <= 0) {
+                    explosions.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
